@@ -1,0 +1,4 @@
+vault = "examples/sample-vault"
+port = 8787
+project_prefix = ""
+primary_sources_dir = "Preparation/Reading/Primary"

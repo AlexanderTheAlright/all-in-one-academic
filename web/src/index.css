@@ -1,0 +1,366 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* surfaces — warm paper, kept calm so the teal can speak */
+    --background: var(--app-bg-hsl, calc(40 + var(--amb-h, 0)) calc(24% + var(--amb-s, 0%)) calc(96% + var(--amb-l, 0%)));
+    --foreground: var(--app-fg-hsl, 26 16% 16%);
+    --card: var(--app-bg-lighter-hsl, calc(40 + var(--amb-h, 0)) calc(30% + var(--amb-s, 0%)) calc(99% + var(--amb-l, 0%)));
+    --card-foreground: var(--app-fg-hsl, 26 16% 16%);
+    --popover: var(--app-bg-lighter-hsl, calc(40 + var(--amb-h, 0)) calc(30% + var(--amb-s, 0%)) calc(99% + var(--amb-l, 0%)));
+    --popover-foreground: var(--app-fg-hsl, 26 16% 16%);
+
+    --primary: var(--app-accent-hsl, 252 74% 58%);
+    --primary-foreground: var(--app-on-accent-hsl, 40 40% 98%);
+
+    /* neutrals — faint warm greys; accent gets a whisper of teal so hovers
+       feel part of the brand rather than a flat grey wash */
+    --secondary: var(--app-bg-dark-hsl, calc(40 + var(--amb-h, 0)) calc(16% + var(--amb-s, 0%)) calc(91% + var(--amb-l, 0%)));
+    --secondary-foreground: var(--app-fg-hsl, 28 14% 24%);
+    --muted: var(--app-bg-dark-hsl, calc(40 + var(--amb-h, 0)) calc(15% + var(--amb-s, 0%)) calc(92% + var(--amb-l, 0%)));
+    --muted-foreground: var(--app-fg-muted-hsl, var(--app-fg-dark-hsl, 32 7% 42%));
+    --muted-quiet: var(--app-fg-quiet-hsl, 32 7% 42%);
+    --accent: var(--app-selection-hsl, 252 45% 93%);
+    --accent-foreground: var(--app-fg-hsl, 252 46% 34%);
+
+    /* attention/destructive — a muted dusty rose, not alarm-red */
+    --destructive: var(--app-red-hsl, 349 38% 53%);
+    --destructive-foreground: var(--app-on-red-hsl, 40 40% 98%);
+
+    --primary-ink: var(--app-accent-ink-hsl, var(--primary));
+    --destructive-ink: var(--app-red-ink-hsl, var(--destructive));
+    --due-soon-ink: var(--app-yellow-ink-hsl, var(--due-soon));
+
+    --border: var(--app-bg-darker-hsl, calc(38 + var(--amb-h, 0)) calc(14% + var(--amb-s, 0%)) calc(86% + var(--amb-l, 0%)));
+    --input: var(--app-bg-darker-hsl, calc(38 + var(--amb-h, 0)) calc(14% + var(--amb-s, 0%)) calc(86% + var(--amb-l, 0%)));
+    --ring: var(--app-accent-hsl, 252 74% 60%);
+    --radius: 0.625rem;
+
+    /* PRIORITY — accent intensity ramp (importance, intrinsic) */
+    --p-high: var(--app-accent-hsl, 252 74% 58%);   /* = accent, full strength */
+    --p-med: var(--app-blue-hsl, 252 42% 64%);   /* accent, softened */
+    --p-low: var(--app-muted-hsl, 35 8% 64%);     /* warm grey, recedes */
+
+    /* URGENCY — due-date pressure (temporal). Dusty rose + warm gold, no harsh red. */
+    --due-over: var(--app-red-hsl, 349 36% 55%);  /* dusty rose */
+    --due-soon: var(--app-yellow-hsl, 40 72% 44%);   /* warm gold, kept distinct from the rose */
+    --due-ok: var(--app-muted-hsl, 32 7% 50%);
+
+    --success: var(--app-success-hsl, 152 55% 27%);   /* 4.55 -> 4.77:1 incl-wash; the day palette has no green hue, so this literal is what ships */
+    --warning: var(--app-warning-hsl, 36 85% 28%);    /* 4.17 -> 5.07:1 on the ambient-tinted surface; same hue and saturation, only lightness */
+    --danger: var(--app-danger-hsl, 349 50% 42%);
+
+    /* elevation — soft, warm-tinted shadows for a paper feel */
+    --shadow-card: 0 1px 2px hsl(28 25% 18% / 0.05), 0 2px 8px hsl(28 25% 18% / 0.06);
+    --shadow-pop:  0 4px 14px hsl(28 25% 18% / 0.11), 0 10px 34px hsl(28 25% 18% / 0.13);
+
+    /* CODE — syntax highlighting for script/data/config previews */
+    --code-keyword:  192 50% 38%;  /* teal, echoes primary */
+    --code-string:   130 32% 36%;  /* soft green */
+    --code-number:   262 30% 52%;  /* soft violet */
+    --code-comment:  32 8% 52%;    /* muted, recedes */
+    --code-function: 205 45% 42%;  /* soft blue */
+    --code-property: 25 55% 42%;   /* warm amber, distinct from due-soon */
+    --code-type:     340 30% 48%;  /* dusty rose-adjacent, distinct from destructive */
+    --code-operator: 26 12% 44%;   /* near-foreground, quiet */
+    --code-macro:    192 40% 46%;  /* Stata locals/globals — teal family, lighter */
+  }
+
+  .dark {
+    --background: var(--app-bg-hsl, calc(220 + var(--amb-h, 0)) calc(18% + var(--amb-s, 0%)) calc(11% + var(--amb-l, 0%)));
+    --foreground: var(--app-fg-hsl, 40 16% 90%);
+    --card: var(--app-bg-lighter-hsl, calc(220 + var(--amb-h, 0)) calc(16% + var(--amb-s, 0%)) calc(14% + var(--amb-l, 0%)));
+    --card-foreground: var(--app-fg-hsl, 40 16% 90%);
+    --popover: var(--app-bg-lighter-hsl, calc(220 + var(--amb-h, 0)) calc(16% + var(--amb-s, 0%)) calc(14% + var(--amb-l, 0%)));
+    --popover-foreground: var(--app-fg-hsl, 40 16% 90%);
+
+    --primary: var(--app-accent-hsl, 252 92% 72%);
+    --primary-foreground: var(--app-on-accent-hsl, 252 45% 10%);
+
+    --secondary: var(--app-bg-dark-hsl, calc(220 + var(--amb-h, 0)) calc(12% + var(--amb-s, 0%)) calc(20% + var(--amb-l, 0%)));
+    --secondary-foreground: var(--app-fg-hsl, 40 16% 88%);
+    --muted: var(--app-bg-dark-hsl, calc(220 + var(--amb-h, 0)) calc(10% + var(--amb-s, 0%)) calc(19% + var(--amb-l, 0%)));
+    --muted-foreground: var(--app-fg-muted-hsl, var(--app-fg-dark-hsl, 215 11% 62%));
+    --muted-quiet: var(--app-fg-quiet-hsl, 215 11% 62%);
+    --accent: var(--app-selection-hsl, 252 26% 26%);
+    --accent-foreground: var(--app-fg-hsl, 252 60% 86%);
+
+    --destructive: var(--app-red-hsl, 349 46% 64%);
+    --destructive-foreground: var(--app-on-red-hsl, 40 40% 98%);
+
+    --primary-ink: var(--app-accent-ink-hsl, var(--primary));
+    --destructive-ink: var(--app-red-ink-hsl, var(--destructive));
+    --due-soon-ink: var(--app-yellow-ink-hsl, var(--due-soon));
+
+    --border: var(--app-bg-darker-hsl, calc(220 + var(--amb-h, 0)) calc(10% + var(--amb-s, 0%)) calc(23% + var(--amb-l, 0%)));
+    --input: var(--app-bg-darker-hsl, calc(220 + var(--amb-h, 0)) calc(10% + var(--amb-s, 0%)) calc(23% + var(--amb-l, 0%)));
+    --ring: var(--app-accent-hsl, 252 92% 72%);
+
+    --p-high: var(--app-accent-hsl, 252 92% 72%);
+    --p-med: var(--app-blue-hsl, 252 42% 62%);
+    --p-low: var(--app-muted-hsl, 220 8% 52%);
+
+    --due-over: var(--app-red-hsl, 349 50% 70%);  /* dusty rose (lifted for dark) */
+    --due-soon: var(--app-yellow-hsl, 40 72% 60%);   /* warm gold */
+    --due-ok: var(--app-muted-hsl, 218 10% 58%);
+
+    --success: var(--app-success-hsl, 152 48% 52%);
+    --warning: var(--app-warning-hsl, 40 72% 60%);
+    --danger: var(--app-danger-hsl, 349 50% 70%);
+
+    --shadow-card: 0 1px 2px hsl(0 0% 0% / 0.28), 0 2px 8px hsl(0 0% 0% / 0.32);
+    --shadow-pop:  0 6px 22px hsl(0 0% 0% / 0.46), 0 12px 40px hsl(0 0% 0% / 0.40);
+
+    /* CODE — lifted for dark surfaces, same hue family as light */
+    --code-keyword:  188 55% 62%;
+    --code-string:   130 35% 62%;
+    --code-number:   262 45% 74%;
+    --code-comment:  215 10% 55%;
+    --code-function: 205 55% 68%;
+    --code-property: 30 60% 66%;
+    --code-type:     340 40% 70%;
+    --code-operator: 40 8% 68%;
+    --code-macro:    188 45% 66%;
+  }
+
+  .paper-tokens {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 12.9%;
+    --card: 0 0% 96.1%;
+    --card-foreground: 0 0% 12.9%;
+    --popover: 0 0% 96.1%;
+    --popover-foreground: 0 0% 12.9%;
+
+    --primary: 223.8 82.2% 55.9%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 92.5%;
+    --secondary-foreground: 0 0% 12.9%;
+    --muted: 0 0% 92.5%;
+    --muted-foreground: 0 0% 36.5%;
+    --muted-quiet: 0 0% 41.2%;
+    --accent: 0 0% 81.6%;
+    --accent-foreground: 0 0% 12.9%;
+
+    --destructive: 301.5 100% 39.4%;
+    --destructive-foreground: 0 0% 98%;
+
+    --primary-ink: 223.8 61.8% 48.2%;
+    --destructive-ink: 301.5 92% 34.1%;
+    --due-soon-ink: 210.3 91.7% 37.6%;
+
+    --border: 0 0% 87.1%;
+    --input: 0 0% 87.1%;
+    --ring: 223.8 82.2% 55.9%;
+
+    --p-high: 223.8 82.2% 55.9%;
+    --p-med: 223.8 82.2% 55.9%;
+    --p-low: 0 0% 62%;
+
+    --due-over: 301.5 100% 39.4%;
+    --due-soon: 210.3 98.2% 43.9%;
+    --due-ok: 0 0% 62%;
+
+    --success: 152 55% 27%;
+    --warning: 36 85% 28%;
+    --danger: 349 50% 42%;
+
+    --shadow-card: 0 1px 2px hsl(28 25% 18% / 0.05), 0 2px 8px hsl(28 25% 18% / 0.06);
+    --shadow-pop:  0 4px 14px hsl(28 25% 18% / 0.11), 0 10px 34px hsl(28 25% 18% / 0.13);
+
+    --code-keyword:  192 50% 38%;
+    --code-string:   130 32% 36%;
+    --code-number:   262 30% 52%;
+    --code-comment:  32 8% 52%;
+    --code-function: 205 45% 42%;
+    --code-property: 25 55% 42%;
+    --code-type:     340 30% 48%;
+    --code-operator: 26 12% 44%;
+    --code-macro:    192 40% 46%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html, body, #root { height: 100%; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Sora', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* typographic rhythm: tighten display headings, relax body */
+  h1 { letter-spacing: -0.021em; }
+  h2, h3 { letter-spacing: -0.012em; }
+  .nums { font-variant-numeric: tabular-nums; }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring) / 0.6);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  
+  .font-wordmark { font-family: 'Geist', 'Sora', ui-sans-serif, system-ui, sans-serif; font-weight: 500; }
+  /* shared elevation utilities — used instead of Tailwind's hard shadows */
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-pop  { box-shadow: var(--shadow-pop); }
+  /* a hairline that reads as a divider on both themes */
+  .rule { border-color: hsl(var(--border)); }
+}
+
+:root {
+  --find-fill: 223.8 82.2% 55.9%;
+  --find-ink: 0 0% 12.9%;
+}
+::highlight(board-find) {
+  background-color: hsl(var(--find-fill) / 0.22);
+  color: hsl(var(--find-ink));
+}
+::highlight(board-find-current) {
+  background-color: hsl(var(--find-fill) / 0.5);
+  color: hsl(var(--find-ink));
+}
+
+:root {
+  
+  --sb-thumb: hsl(var(--primary, 252 74% 58%) / 0.30);
+  --sb-thumb-hover: hsl(var(--primary, 252 74% 58%) / 0.55);
+  scrollbar-color: var(--sb-thumb) transparent;
+}
+*, *::before, *::after { scrollbar-width: thin; scrollbar-color: var(--sb-thumb) transparent; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner { background: transparent; }
+::-webkit-scrollbar-thumb {
+  /* the transparent border insets the thumb to ~4px against a clear track */
+  background: var(--sb-thumb);
+  background-clip: padding-box;
+  border: 2px solid transparent;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sb-thumb-hover);
+  background-clip: padding-box;
+}
+
+textarea,
+[contenteditable="true"],
+[data-knav-full-page] textarea,
+[role="dialog"][aria-label="Notes"] textarea {
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+}
+textarea::-webkit-scrollbar,
+[contenteditable="true"]::-webkit-scrollbar { width: 0; height: 0; display: none; }
+
+/* slim, subtle scrollbar on horizontally/vertically scrollable areas */
+.tinybar::-webkit-scrollbar { height: 9px; width: 9px; }
+.tinybar::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb);
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.tinybar::-webkit-scrollbar-thumb:hover { background: var(--sb-thumb-hover); }
+.tinybar::-webkit-scrollbar-track { background: transparent; }
+
+/* faint muted text stays readable: every step of text-muted-foreground below /90 wears
+ * --muted-quiet, the palette's faint ink computed to 4.6:1 on every surface */
+.text-muted-foreground\/25, .text-muted-foreground\/30, .text-muted-foreground\/35,
+.text-muted-foreground\/40, .text-muted-foreground\/45, .text-muted-foreground\/50,
+.text-muted-foreground\/55, .text-muted-foreground\/60, .text-muted-foreground\/65,
+.text-muted-foreground\/70, .text-muted-foreground\/75, .text-muted-foreground\/80,
+.text-muted-foreground\/85 { color: hsl(var(--muted-quiet)); }
+
+html[data-knav] :focus-visible,
+html[data-knav] [data-knav-armed]:focus {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 1px;   /* just outside the box: never drawn through a label's text */
+}
+/* list rows take the cursor wash; whole cards don't (a washed card reads as disabled) */
+html[data-knav] :is([data-knav-item], [role=option], [role=gridcell], [role=treeitem]):focus-visible {
+  background-color: hsl(var(--accent));
+}
+/* a chart takes the ring, never the wash: a washed plot hides its own empty marks */
+html[data-knav] [data-datum-surface]:focus-visible { background-color: transparent; }
+
+html[data-knav] [data-coding-text]:focus-visible { background-color: transparent; outline: none; }
+/* a field you arrowed onto but are not typing in yet */
+html[data-knav] [data-knav-armed]:focus { caret-color: transparent; }
+html[data-knav] :focus { scroll-margin-block: 72px 40px; scroll-margin-inline: 24px; }
+/* hover-only reveals also show for the keyboard */
+.group:focus-within .group-hover\:opacity-100,
+.group\/item:focus-within .group-hover\/item\:opacity-100,
+.group\/card:focus-within .group-hover\/card\:opacity-100,
+.group\/ref:focus-within .group-hover\/ref\:opacity-100,
+.group\/sec:focus-within .group-hover\/sec\:opacity-100,
+.group\/pt:focus-within .group-hover\/pt\:opacity-100,
+.group\/w:focus-within .group-hover\/w\:opacity-100,
+.group:focus-within .group-hover\:visible { opacity: 1; visibility: visible; }
+.opacity-0:focus-visible { opacity: 1; }
+
+/* a widget's focused view (⏎ on a widget) fills the page area; lib/arrownav.ts keeps
+ * --knav-main-* in step with <main>'s box, so the rail and the key strip stay put */
+[data-knav-focused] {
+  position: fixed !important;
+  top: var(--knav-main-top) !important;
+  left: var(--knav-main-left) !important;
+  width: var(--knav-main-width) !important;
+  height: var(--knav-main-height) !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  z-index: 25;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background-color: hsl(var(--background));
+  padding: clamp(10px, 2vw, 32px);
+}
+html[data-knav-focusing] [data-knav-region=main] { overflow: hidden; }
+
+html[data-knav-full] [data-knav-focused] { z-index: 60; }
+/* a widget stop takes the ring as a lifted card, not an inset line */
+html[data-knav] [data-knav-widget]:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 3px;
+  border-radius: 14px;
+}
+/* a focused view IS the page: no ring around the window's edge */
+html[data-knav] [data-knav-widget][data-knav-focused]:focus-visible { outline: none; }
+
+math { font-family: inherit; }
+mi { text-transform: none; }
+mi:not([mathvariant]) { font-style: italic; }
+mo[stretchy="true"], mo[largeop], msqrt, mroot {
+  font-family: "Latin Modern Math", "STIX Two Math", "Cambria Math", "Noto Sans Math", math;
+}
+merror { color: hsl(var(--danger)); background: none; border: 0; }
+
+/* motion — purposeful and fast; honor reduced-motion */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(3px); }
+  to   { opacity: 1; transform: none; }
+}
+/* fill "backwards", not "both": a retained transform fill can make this the
+ * containing block for fixed-position drawers in Electron/Chromium */
+main > div { animation: fade-up 180ms cubic-bezier(.22,1,.36,1) backwards; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ------------------------------------------------------------- print */
+@media print {
+  aside, .no-print, [data-sonner-toaster], button[aria-label="Close"] { display: none !important; }
+  main { overflow: visible !important; }
+  main > div { max-width: 100% !important; padding: 0 !important; animation: none !important; }
+  body, .bg-background { background: white !important; color: black !important; }
+  .bg-card, .bg-card\/40, .bg-card\/60 { background: white !important; box-shadow: none !important; }
+  * { color: black !important; border-color: #ccc !important; }
+  [style*="color: hsl"], [style*="background: hsl"] { color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .grid, header { break-inside: avoid; }
+}

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All-in-One Academic</title>
+    <script>
+      (function () {
+        var t = null;
+        try { t = JSON.parse(localStorage.getItem("aioa-theme") || "null"); } catch (e) { t = null; }
+        var l = document.createElement("link");
+        l.id = "app-theme-css"; l.rel = "stylesheet";
+        l.href = "/theme.css" + (t === "light" || t === "dark" ? "?mode=" + t : "");
+        document.head.appendChild(l);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
