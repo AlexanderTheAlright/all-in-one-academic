@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/logo.svg" width="96" alt="all-in-one-academic"></p>
+
 # all-in-one-academic
 
 <!-- description -->

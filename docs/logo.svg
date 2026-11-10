@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="548" height="550" viewBox="238 230 548 550">
+  <defs>
+    <radialGradient id="inner" cx="0.5" cy="0.42" r="0.6">
+      <stop offset="0" stop-color="#C4B5FD" stop-opacity="0.08"></stop>
+      <stop offset="1" stop-color="#C4B5FD" stop-opacity="0"></stop>
+    </radialGradient>
+    <linearGradient id="gU1" gradientUnits="userSpaceOnUse" x1="0" y1="560" x2="0" y2="238"><stop offset="0" stop-color="#8B6DF8"></stop><stop offset="1" stop-color="#5636C4"></stop></linearGradient>
+    <linearGradient id="gU2" gradientUnits="userSpaceOnUse" x1="0" y1="560" x2="0" y2="238"><stop offset="0" stop-color="#7C5CFF"></stop><stop offset="1" stop-color="#4C2AAE"></stop></linearGradient>
+    <linearGradient id="gU3" gradientUnits="userSpaceOnUse" x1="0" y1="560" x2="0" y2="238"><stop offset="0" stop-color="#5B3FD6"></stop><stop offset="1" stop-color="#3A1E8E"></stop></linearGradient>
+    <linearGradient id="gU4" gradientUnits="userSpaceOnUse" x1="0" y1="560" x2="0" y2="238"><stop offset="0" stop-color="#4930B8"></stop><stop offset="1" stop-color="#2E1570"></stop></linearGradient>
+    <linearGradient id="gD1" gradientUnits="userSpaceOnUse" x1="0" y1="772" x2="0" y2="616"><stop offset="0" stop-color="#8B6DF8"></stop><stop offset="1" stop-color="#A78BFA"></stop></linearGradient>
+    <linearGradient id="gD2" gradientUnits="userSpaceOnUse" x1="0" y1="772" x2="0" y2="616"><stop offset="0" stop-color="#7C5CFF"></stop><stop offset="1" stop-color="#9174F4"></stop></linearGradient>
+    <linearGradient id="gD3" gradientUnits="userSpaceOnUse" x1="0" y1="772" x2="0" y2="616"><stop offset="0" stop-color="#5A3DC8"></stop><stop offset="1" stop-color="#6A4EDD"></stop></linearGradient>
+    <linearGradient id="gD4" gradientUnits="userSpaceOnUse" x1="0" y1="772" x2="0" y2="616"><stop offset="0" stop-color="#472BA6"></stop><stop offset="1" stop-color="#5638BE"></stop></linearGradient>
+    <linearGradient id="rim" gradientUnits="userSpaceOnUse" x1="512" y1="238" x2="246" y2="772">
+      <stop offset="0" stop-color="#F0EBFF" stop-opacity="0.85"></stop><stop offset="0.4" stop-color="#C4B5FD" stop-opacity="0.4"></stop><stop offset="1" stop-color="#C4B5FD" stop-opacity="0"></stop>
+    </linearGradient>
+    <clipPath id="sil"><polygon points="512,238 246,772 778,772"></polygon></clipPath>
+  </defs>
+  <polygon points="512,238 352,560 440,560" fill="url(#gU1)"></polygon>
+  <polygon points="512,238 440,560 534,560" fill="url(#gU2)"></polygon>
+  <polygon points="512,238 534,560 606,560" fill="url(#gU3)"></polygon>
+  <polygon points="512,238 606,560 672,560" fill="url(#gU4)"></polygon>
+  <polygon points="352,560 440,560 427,616 324,616" fill="#CDBFFF"></polygon>
+  <polygon points="440,560 534,560 538,616 427,616" fill="#AE97FC"></polygon>
+  <polygon points="534,560 606,560 622,616 538,616" fill="#8E70F0"></polygon>
+  <polygon points="606,560 672,560 700,616 622,616" fill="#7458DE"></polygon>
+  <polygon points="324,616 427,616 392,772 246,772" fill="url(#gD1)"></polygon>
+  <polygon points="427,616 538,616 548,772 512,682 470,772 392,772" fill="url(#gD2)"></polygon>
+  <polygon points="538,616 622,616 668,772 548,772" fill="url(#gD3)"></polygon>
+  <polygon points="622,616 700,616 778,772 668,772" fill="url(#gD4)"></polygon>
+  <line x1="512" y1="682" x2="548" y2="772" stroke="#A78BFA" stroke-opacity="0.35" stroke-width="2"></line>
+  <polygon points="512,238 439,384 486,354" fill="#3A1678"></polygon>
+  <polygon points="512,238 486,354 523,396" fill="#160E2E"></polygon>
+  <polygon points="512,238 523,396 548,360" fill="#2B1157"></polygon>
+  <polygon points="512,238 548,360 583,380" fill="#22104A"></polygon>
+  <ellipse cx="512" cy="430" rx="270" ry="290" fill="url(#inner)" clip-path="url(#sil)"></ellipse>
+  <line x1="352" y1="560" x2="672" y2="560" stroke="#E9E2FF" stroke-opacity="0.3" stroke-width="1.5"></line>
+  <line x1="512" y1="238" x2="246" y2="772" stroke="url(#rim)" stroke-width="2.5"></line>
+  <polygon points="512,242 484,300 501,316" fill="#E9E2FF" opacity="0.9"></polygon>
+</svg>

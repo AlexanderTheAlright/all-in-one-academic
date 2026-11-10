@@ -5,7 +5,7 @@ import { useRestIntent, INTENT_MS } from "@/lib/restIntent";
 import { Sun, Moon, SunMoon, Sun as SunIcon, Hash, Search } from "lucide-react";
 import { BookOpen, BarChart3, FileText, Calendar, Pin, SquarePen, BookMarked, NotebookPen, GraduationCap, Boxes } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AioaMark } from "@/components/AioaMark";
+import { AppMark } from "@/components/AppMark";
 import { StaleDot, UpdateDot, brandTitle, reloadForUpdate, useStaleness } from "@/components/StaleDot";
 import type { Glimpse, Recent } from "@/lib/api";
 import type { Surface } from "@/lib/surface";
@@ -191,7 +191,7 @@ export function Sidebar({ nav, go, theme, setTheme, isDark, surface, onCmd, onHe
             <button type="button" onClick={reloadForUpdate} title={brandTitle(stale)} aria-label="New version — reload"
               data-bundle-reload
               className="relative flex shrink-0 items-center gap-2.5 px-1.5 pb-4 [@media(max-height:640px)]:pb-1.5 text-left rounded-md">
-              <AioaMark className="h-[26px] w-auto shrink-0" title={brandTitle(stale)} />
+              <AppMark className="h-[26px] w-auto shrink-0" title={brandTitle(stale)} />
               <StaleDot />
               <UpdateDot />
               <span className={`font-wordmark text-[17px] tracking-[0.05em] leading-none text-foreground ${reveal}`}>All-in-One Academic</span>
@@ -199,7 +199,7 @@ export function Sidebar({ nav, go, theme, setTheme, isDark, surface, onCmd, onHe
           ) : (
             <div title={brandTitle(stale)}
               className="relative flex shrink-0 items-center gap-2.5 px-1.5 pb-4 [@media(max-height:640px)]:pb-1.5">
-              <AioaMark className="h-[26px] w-auto shrink-0" title={brandTitle(stale)} />
+              <AppMark className="h-[26px] w-auto shrink-0" title={brandTitle(stale)} />
               <StaleDot />
               <span className={`font-wordmark text-[17px] tracking-[0.05em] leading-none text-foreground ${reveal}`}>All-in-One Academic</span>
             </div>
